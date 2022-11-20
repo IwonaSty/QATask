@@ -32,7 +32,7 @@ describe('Searching Page', () =>{
         cy.get('#dropoff').should('have.value', '') //data
     })
 
-    it('2. Check the appearance of the results', () => {
+    it('2. Check the appearance of the results in the table', () => {
         
         cy.get('#country').select('Poland')
         cy.get('#city').select('Cracow')
@@ -50,6 +50,11 @@ describe('Searching Page', () =>{
         cy.get('#search-results').children('thead').children().children().eq('5').contains('Price per day')
         cy.get('#search-results').children('thead').children().children().eq('6').contains('Action')
        
+        //fields should remain as filled
+        cy.get('#country').should('have.value','Poland')
+        cy.get('#city').should('have.value','Cracow')
+        cy.get('#pickup').should('have.value',TODAY_DATE)
+        cy.get('#dropoff').should('have.value', TOMORROW_DATE)
     })
 
     it('3. Click Search button without filling the obligatory fields. Check walidations', () => {
@@ -79,13 +84,14 @@ describe('Searching Page', () =>{
         cy.get('#dropoff').type(TOMORROW_DATE)
 
         cy.get('.btn').click()
+        cy.get('#search-results').should('not.be.visible')
         cy.get('.alert').contains('Please enter a valid city!') //should be similar validation as in the dates
         //here is the ERROR (above)
-        //the results of the search should not be visible!
+        //but better consult it with the business analist
     
     })
 
-    it.only('6. Check the results of searching by date & car model.', () => {
+    it('6. Check the results of searching by date & car model.', () => {
     
         cy.get('#country').select('Poland')
         cy.get('#city').select('Cracow')
@@ -93,8 +99,18 @@ describe('Searching Page', () =>{
         cy.get('#pickup').type(TODAY_DATE)
         cy.get('#dropoff').type(TOMORROW_DATE)
 
+        cy.get('.btn').click()
         //list of results should contain only the Mazda type
-       
+        cy.get('tbody').children('tr').each(($row)=> 
+        {
+            cy.get($row).children('td').eq(2).contains('Mazda')
+        })
+
+        cy.get('#country').should('have.value','Poland')
+        cy.get('#city').should('have.value','Cracow')
+        cy.get('#model').should('have.value','Mazda')
+        cy.get('#pickup').should('have.value',TODAY_DATE)
+        cy.get('#dropoff').should('have.value', TOMORROW_DATE)
 
         cy.get('#country').select('Poland')
         cy.get('#city').select('Cracow')
@@ -102,8 +118,12 @@ describe('Searching Page', () =>{
         cy.get('#pickup').type(TODAY_DATE)
         cy.get('#dropoff').type(TOMORROW_DATE)
 
+        cy.get('.btn').click()
         //list of results should contain only the Volkswagen type
-
+        cy.get('tbody').children('tr').each(($row)=> 
+        {
+            cy.get($row).children('td').eq(2).contains('Volkswagen')
+        })
     })
 
     it('7. Fill the obligatory fields with correct values. Check total price', () => {
@@ -114,6 +134,8 @@ describe('Searching Page', () =>{
         cy.get('#pickup').type(TODAY_DATE)
         cy.get('#dropoff').type(TOMORROW_DATE)
         //2 days
+
         
+
     })
 })
