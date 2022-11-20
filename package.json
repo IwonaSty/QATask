@@ -18,5 +18,8 @@
   "homepage": "https://github.com/IwonaSty/QATask#readme",
   "devDependencies": {
     "cypress": "^11.1.0"
+  },
+  "dependencies": {
+    "prettier": "^2.7.1"
   }
 }
