@@ -9,7 +9,7 @@ describe('Searching Page', () =>{
     beforeEach('Should load searching page', () => {
         
         cy.VisitPage()
-        
+
     })
 
     it('1. Check the appearance of the searching page', () => {
@@ -24,7 +24,8 @@ describe('Searching Page', () =>{
             .and('be.visible')
         cy.get('.alert').contains('Please fill pickup and drop off dates')
 
-        cy.get('#country').should('have.value', '') //should have the same placeholder as in Model
+        cy.get('#country').should('have.value', '') 
+        //TO DO: talk to business analist, should similar as it is in Model. Why France should be the default value?
         cy.get('#city').should('have.value', '')
         //above are the ERRORS (country & city)
         cy.get('#model').should('have.value', '') //i placeholder model
@@ -78,8 +79,8 @@ describe('Searching Page', () =>{
         //fields should remain as filled
         cy.get('#country').should('have.value','3') //Poland=1, Germany=2, France=3
         cy.get('#city').should('have.value','4') //Cracow = 2, Wroclaw =1, Berlin =3, Paris = 4
-        cy.get('#pickup').should('have.value',TODAY_DATE)
-        cy.get('#dropoff').should('have.value', TOMORROW_DATE)
+        cy.get('#pickup').should('have.value', TOMORROW_DATE)
+        cy.get('#dropoff').should('have.value', TODAY_DATE)
     })
 
     it('5. Fill the obligatory fields with incorrect values (select city which is not in the selected country). Check walidations', () => {
