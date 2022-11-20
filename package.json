@@ -1,0 +1,22 @@
+{
+  "name": "qatask",
+  "version": "1.0.0",
+  "description": "a task for recrutation to Tivix, car rental",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run cy:open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IwonaSty/QATask.git"
+  },
+  "author": "Iwona Stysiak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IwonaSty/QATask/issues"
+  },
+  "homepage": "https://github.com/IwonaSty/QATask#readme",
+  "devDependencies": {
+    "cypress": "^11.1.0"
+  }
+}
