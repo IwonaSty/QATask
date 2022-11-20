@@ -8,7 +8,7 @@ describe('Page with Car Details', () =>{
     
     beforeEach('Fill searching form and click Rent button', () => {
         
-        cy.visit('http://qalab.pl.tivixlabs.com', {timeout: 1000})
+        cy.VisitPage()
         cy.FillSearchWithCorrectValues('Poland', 'Wroclaw', TODAY_DATE, NEXT_WEEK)
         cy.contains('Rent').first().click()
         cy.url().should('include' , '/details/3')

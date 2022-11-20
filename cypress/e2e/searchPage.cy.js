@@ -8,10 +8,8 @@ describe('Searching Page', () =>{
     
     beforeEach('Should load searching page', () => {
         
-        cy.visit('http://qalab.pl.tivixlabs.com', {timeout: 1000})
-        cy.url().should('include' , 'tivixlabs.com')
-        cy.log('Website loaded')
-        cy.title().should('include','Car rent')
+        cy.VisitPage()
+        
     })
 
     it('1. Check the appearance of the searching page', () => {
@@ -34,7 +32,7 @@ describe('Searching Page', () =>{
         cy.get('#dropoff').should('have.value', '') //have type - data
     })
 
-    it.only('2. Check the appearance of the results in the table', () => {
+    it('2. Check the appearance of the results in the table', () => {
         
         cy.get('#country').select('Poland')
         cy.get('#city').select('Cracow')

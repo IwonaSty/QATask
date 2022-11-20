@@ -1,3 +1,12 @@
+Cypress.Commands.add('VisitPage',()=> {
+    cy.clearCookies(),
+    cy.clearLocalStorage(),
+    cy.visit('http://qalab.pl.tivixlabs.com', {timeout: 1000})
+    cy.url().should('include' , 'tivixlabs.com')
+    cy.log('Website loaded')
+    cy.title().should('include','Car rent')
+})
+
 Cypress.Commands.add('FillSearchWithCorrectValues', (country, city, pickupDate, dropoffDate) => {
     cy.visit('http://qalab.pl.tivixlabs.com', {timeout: 1000})
     cy.get('#country').select(country)
