@@ -3,9 +3,6 @@ const TODAY_DATE = dayjs().format('YYYY-MM-DD')
 const TOMORROW_DATE = dayjs().add(2,'day').format('YYYY-MM-DD')
 const PREV_DATE = dayjs().add(-2,'day').format('YYYY-MM-DD')
 
-const rentButton = Cypress.$('.btn')
-
-
 describe('Rent Form', () =>{
     
     beforeEach('Steps to get to the rent form', () => {
@@ -42,8 +39,6 @@ describe('Rent Form', () =>{
         cy.get('#card_number').should('be.empty')
         cy.get('#email').should('be.empty') 
         
-        //const rentButton = Cypress.$('.btn')
-        //rentButton.click()
         cy.get('.btn').click().location('pathname', { timeout: 10000 }).should('include', 'rent/1')
 
         //walidation: Wrong order of email & car number
