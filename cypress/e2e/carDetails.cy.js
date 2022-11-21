@@ -15,7 +15,7 @@ describe('Page with Car Details', () =>{
 
     })
 
-    it('1. Check the appearance of the main page', () => {
+    it.skip('1. Check the appearance of the main page', () => {
     
         cy.get('.card-header').should('contain', MODEL)
         cy.get('.card-title').should('contain', COMPANY)
@@ -37,6 +37,7 @@ describe('Page with Car Details', () =>{
     
         cy.contains('Search ').click({force:true})
         cy.url().should('include' , 'tivixlabs.com')
+        //cy.url().should('include' , '')
     })
 
 
