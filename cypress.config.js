@@ -13,7 +13,7 @@ module.exports = defineConfig({
     requestTimeout: 15000,
     responseTimeout: 15000,
     video: false,
-    failOnStatusCode: false,
+    //failOnStatusCode: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
